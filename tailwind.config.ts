@@ -12,8 +12,26 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      clipPath: {
+        'clip-bottom': 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)',
+        'clip-full': 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'
+      },
+      lineHeight: {
+        '0.8': '0.8',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    ({ addUtilities }: { addUtilities: (utilities: Record<string, any>) => void; }) => {
+    addUtilities({
+      '.clip-bottom': {
+        'clip-path': 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)',
+      },
+      '.clip-full': {
+        'clip-path': 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+      },
+    });
+  }
+  ],
 };
 export default config;
